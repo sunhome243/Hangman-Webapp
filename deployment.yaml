@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hangman-deployment
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: hangman
+  template:
+    metadata:
+      labels:
+        app: hangman
+    spec:
+      containers:
+      - name: hangman-container
+        image: whalerider02/hangman-app:latest # Or your private registry URL
+        ports:
+        - containerPort: 5200
