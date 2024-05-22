@@ -23,19 +23,32 @@ Welcome to my very first project—a fully functional web application for the po
 1. **Download the Code Files:**
    - Clone the repository or download the code files to your local machine.
 
-2. **Create Docker Image:**
+2. **Optional** **Create Docker Image:**
+   deployment.yaml file will automatically download the image if the image is not already present on the node where the pod is scheduled.
+   - Pull the image from Docker registry
+     ```bash
+     docker pull whalerider02/hangman-app
+     ```
+   OR
    - Navigate to the directory containing the Dockerfile.
    - Build the Docker image:
      ```bash
      docker build -t hangman-image .
      ```
-   - Alternatively, you can load the pre-built image:
+   - Tag the Docker image
+     ```bash
+     docker tag hangman-image USERNAME/hangman-image
+     ```
+   - Push them to private registry (if needed)
+     
+     
+   - You can load the pre-built image with tar file:
      ```bash
      docker load -i hangman-image.tar
      ```
      (Ensure the tar file is unzipped before running this command.)
-
-3. **Deploy to Minikube:**
+     
+4. **Deploy to Minikube:**
    - Apply the deployment configuration:
      ```bash
      kubectl apply -f deployment.yaml
@@ -46,7 +59,7 @@ Welcome to my very first project—a fully functional web application for the po
      kubectl get pods
      ```
 
-4. **Expose the Service:**
+5. **Expose the Service:**
    - Apply the service configuration:
      ```bash
      kubectl apply -f service.yaml
@@ -56,7 +69,7 @@ Welcome to my very first project—a fully functional web application for the po
      kubectl get service
      ```
 
-5. **Access the Application:**
+6. **Access the Application:**
    - Start the Hangman service in Minikube:
      ```bash
      minikube service hangman-service
