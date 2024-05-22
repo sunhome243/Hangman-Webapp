@@ -1,27 +1,66 @@
-### Title
-The Hangman Game
+# The Hangman Game
 
-#### Project Description
-This is my very first project to create a fully fuctional web application
-The application runs 'Hangman game,' a popular word game around the world
+## Project Description
 
-I have used Js, CSS, and HTML for frontend and Pythond for backend
-Docker and Minikube are used for containerization and orchestration
-I've tested on a local environment and the Minikube environment
+Welcome to my very first project—a fully functional web application for the popular word game, Hangman. This application features a user-friendly front end built with JavaScript, CSS, and HTML, and a robust backend powered by Python. For containerization and orchestration, Docker and Minikube have been utilized. The application has been tested both in a local environment and within a Minikube setup.
 
-### How to
-- Set up minikube and docker environment
+## Technologies Used
 
-- Use dockerfile to create an image of the image **after downloading all the code files**
-OR
-Use docker load -i hangman-image.tar **after downloading only the hangman-image file (don't forget to unzip)**
+- **Frontend:** JavaScript, CSS, HTML
+- **Backend:** Python
+- **Containerization:** Docker
+- **Orchestration:** Minikube
 
-- Use kubectl apply -f deployment.yaml (change directory direction if needed)
-(Use kubectl get pods to check everything is working)
+## Setup Instructions
 
-- Use kubectl apply -f service.yaml
-(Use kubectl get service to check everything is working)
+### Prerequisites
 
-- Use minikube service hangman-service
+1. **Minikube:** Ensure Minikube is installed and running.
+2. **Docker:** Ensure Docker is installed and running.
 
-Now, Minikube will open the web browser for you!
+### Steps to Set Up
+
+1. **Download the Code Files:**
+   - Clone the repository or download the code files to your local machine.
+
+2. **Create Docker Image:**
+   - Navigate to the directory containing the Dockerfile.
+   - Build the Docker image:
+     ```bash
+     docker build -t hangman-image .
+     ```
+   - Alternatively, you can load the pre-built image:
+     ```bash
+     docker load -i hangman-image.tar
+     ```
+     (Ensure the tar file is unzipped before running this command.)
+
+3. **Deploy to Minikube:**
+   - Apply the deployment configuration:
+     ```bash
+     kubectl apply -f deployment.yaml
+     ```
+     (Adjust the directory path if necessary.)
+   - Verify that the pods are running:
+     ```bash
+     kubectl get pods
+     ```
+
+4. **Expose the Service:**
+   - Apply the service configuration:
+     ```bash
+     kubectl apply -f service.yaml
+     ```
+   - Verify that the service is running:
+     ```bash
+     kubectl get service
+     ```
+
+5. **Access the Application:**
+   - Start the Hangman service in Minikube:
+     ```bash
+     minikube service hangman-service
+     ```
+   - Minikube will automatically open the web browser, directing you to the Hangman game application.
+
+Enjoy playing the Hangman game on your newly set up web application!
