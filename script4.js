@@ -89,12 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return word.split('').every(letter => guessedLetters.includes(letter));
     }
 
-    function hideHangman() {
-        hangmanParts.forEach(part => {
-            document.getElementById(part).classList.add('hidden');
-        });
-    }
-
     function showHangmanPart(attempt) {
         if (attempt <= hangmanParts.length) {
             document.getElementById(hangmanParts[attempt - 1]).classList.remove('hidden');

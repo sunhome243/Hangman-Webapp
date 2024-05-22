@@ -8,5 +8,5 @@ spec:
     app: hangman
   ports:
   - protocol: TCP
-    port: 5000  # Use the same port as the container
-    targetPort: 5000
+    port: 5900 
+    targetPort: 5200
