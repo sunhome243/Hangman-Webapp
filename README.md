@@ -9,7 +9,7 @@ Welcome to my very first project—a fully functional web application for the po
 - **Frontend:** JavaScript, CSS, HTML
 - **Backend:** Python
 - **Containerization:** Docker
-- **Orchestration:** Minikube
+- **Orchestration:** Kubernetes (Minikube, GCP)
 
 ## Setup Instructions
 
