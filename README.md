@@ -1,5 +1,9 @@
 # The Hangman Game
 
+## Updates
+05.23/2024 
+Updated the docker image to a multi-platform image that will work with on both ARM and AMD architecture.
+
 ## Project Description
 
 Welcome to my very first project—a fully functional web application for the popular word game, Hangman. This application features a user-friendly front end built with JavaScript, CSS, and HTML, and a robust backend powered by Python. For containerization and orchestration, Docker and Minikube have been utilized. The application has been tested both in a local environment and within a Minikube setup.
@@ -27,24 +31,24 @@ Welcome to my very first project—a fully functional web application for the po
    deployment.yaml file will automatically download the image if the image is not already present on the node where the pod is scheduled.
    - Pull the image from Docker registry
      ```bash
-     docker pull whalerider02/hangman-app
+     docker pull whalerider02/hangman-app-mp
      ```
    OR
    - Navigate to the directory containing the Dockerfile.
    - Build the Docker image:
      ```bash
-     docker build -t hangman-image .
+     docker build -t hangman-image-mp .
      ```
    - Tag the Docker image
      ```bash
-     docker tag hangman-image USERNAME/hangman-image
+     docker tag hangman-image USERNAME/hangman-image-mp
      ```
    - Push them to private registry (if needed)
      
      
    - You can load the pre-built image with tar file:
      ```bash
-     docker load -i hangman-image.tar
+     docker load -i hangman-image-mp.tar
      ```
      (Ensure the tar file is unzipped before running this command.)
      
@@ -69,7 +73,7 @@ Welcome to my very first project—a fully functional web application for the po
      kubectl get service
      ```
 
-6. **Access the Application:**
+6. **Access the Application (on Minikube):**
    - Start the Hangman service in Minikube:
      ```bash
      minikube service hangman-service
