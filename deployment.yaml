@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: hangman-deployment
 spec:
-  replicas: 1 
+  replicas: 1
   selector:
     matchLabels:
       app: hangman
@@ -14,6 +14,13 @@ spec:
     spec:
       containers:
       - name: hangman-container
-        image: whalerider02/hangman-app:latest # Or your private registry URL
+        image: whalerider02/hangman-app-amd
         ports:
         - containerPort: 5200
+        resources:
+          requests:
+            cpu: "200m"  # Request 200 millicores of CPU
+            memory: "4Gi" # Request 4 GB of memory
+          limits:
+            cpu: "250m"  # Limit to 250 millicores of CPU
+            memory: "5Gi" # Limit to 5 GB of memory
