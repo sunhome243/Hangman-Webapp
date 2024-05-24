@@ -1,7 +1,7 @@
 pipeline {
   agent {
-      label 'my-defined-label' // Specify the label of the predefined agent
-    }
+    label 'my-defined-label'
+  }
   stages {
     stage('Build') {
       steps {
