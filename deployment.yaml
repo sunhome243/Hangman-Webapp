@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hangman-container
-        image: whalerider02/hangman-app-mp
+        image: whalerider02/hangman-app-mp:latest
         ports:
         - containerPort: 5200
         resources:
