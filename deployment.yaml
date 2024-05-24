@@ -18,9 +18,6 @@ spec:
         ports:
         - containerPort: 5200
         resources:
-          requests:
-            cpu: "200m"  # Request 200 millicores of CPU
-            memory: "4Gi" # Request 4 GB of memory
           limits:
-            cpu: "250m"  # Limit to 250 millicores of CPU
-            memory: "5Gi" # Limit to 5 GB of memory
+            cpu: "200m"   # Limit to 200 millicores of CPU
+            memory: "256Mi" # Limit to 256 MB of memory
