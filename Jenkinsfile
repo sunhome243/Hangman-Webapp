@@ -7,5 +7,11 @@ pipeline {
       }
     }
 
+    stage('push') {
+      steps {
+        sh 'docker push whalerider02/hangman-app:latest'
+      }
+    }
+
   }
 }
