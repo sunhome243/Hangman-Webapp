@@ -6,7 +6,7 @@ pipeline {
       stage('Test'){
         steps{
           sleep 5
-          sh 'curl http://localhost:5100'
+          sh 'curl http://localhost:5200'
           sh 'curl http://localhost:5200/start'
         }
       }
