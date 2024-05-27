@@ -1,8 +1,17 @@
 # The Hangman Game
 
 ## Updates
-05.23/2024 
+
+05.23.2024 
 Updated the docker image to a multi-platform image that will work with on both ARM and AMD architecture.
+- Try out through http://35.194.13.114:5900 to play the hangman game.
+
+05.27.2024
+Added Jenkins pipeline file for CI/CD.
+- Set local port to 5200:5200 when creating container.
+```bash
+docker run -d -p 5200:5200 whalerider02/hangman-app-mp:latest
+```
 
 ## Project Description
 
