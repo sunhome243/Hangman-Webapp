@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t whalerider02/hangman-app-mp:latest --platform linux/amd64,linux/arm64 .'
+        sh 'sudo docker build -t whalerider02/hangman-app-mp:latest --platform linux/amd64,linux/arm64 .'
       }
     }
 
