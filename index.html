@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to the Deadly Hangman Game!</title>
+    <title>The Deadly Hangman Game!</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,21 +29,21 @@
                 </div>
             </div>
             <div id="inputArea">
+                <input type="text" id="playerInput" placeholder="Enter your name">
                 <input type="text" id="letterInput" maxlength="1">
                 <button id="guessButton">Guess</button>
             </div>
             <div id="message"></div>
             <div id="attempts">Attempts left: <span id="attemptsLeft"></span></div>
             <div id="triedLetters">Tried letters: <span id="lettersTried"></span></div>
+            <div id="scores">Scores: <span id="scoreDisplay"></span></div>
             <div class="spikes" id="spikes1"></div>
             <div class="spikes" id="spikes3"></div>
             <div class="spikes" id="spikes2"></div>
             <div class="spikes" id="spikes4"></div>
             <div class="spikes" id="spikes5"></div>
-
         </div>
     </div>
-    </script>
     <script src="script4.js"></script>
     <div id="fireworks"></div>
 </body>

@@ -1,10 +1,9 @@
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask, jsonify, send_from_directory, request
 import random
 import json
-import os
 
 # Path to the scores file within the mounted volume
-scores_file = '/data/scores.json' 
+SCORES_FILE = '/data/scores.json' 
 
 app = Flask(__name__)
 
@@ -27,32 +26,35 @@ def static_files(path):
     return send_from_directory('.', path)
 
 
-# Function to get scores from the file
-def get_scores():
+def load_scores():
+    """Loads scores from the persistent volume."""
     try:
-        with open(scores_file, 'r') as f:
-            scores = json.load(f)
+        with open(SCORES_FILE, 'r') as f:
+            return json.load(f)
     except FileNotFoundError:
-        scores = {}  # Initialize an empty dictionary if file doesn't exist
-    return scores
+        return {}
 
-# Function to save scores to the file
 def save_scores(scores):
-    with open(scores_file, 'w') as f:
+    """Saves scores to the persistent volume."""
+    with open(SCORES_FILE, 'w') as f:
         json.dump(scores, f)
 
-# Route to handle score updates
-@app.route('/update_score', methods=['POST'])
+@app.route('/score', methods=['POST'])
 def update_score():
-    data = request.get_json()  # Get score data from the request
+    data = request.get_json()
     player_name = data.get('player')
     score = data.get('score')
 
-    scores = get_scores()
-    scores[player_name] = score  # Update the score
+    scores = load_scores()
+    scores[player_name] = score  # Update or add score
     save_scores(scores)
 
-    return jsonify({'message': 'Score updated successfully!'}), 200
+    return jsonify({'message': 'Score updated successfully'}), 200
+
+@app.route('/scores', methods=['GET'])
+def get_scores():
+    scores = load_scores()
+    return jsonify(scores)
 
 
 if __name__ == '__main__':
