@@ -12,12 +12,12 @@ pipeline {
         steps{
           sh 'docker run -d -p 5200:5200 whalerider02/hangman-app-mp:latest'
           sleep 5
-          sh 'curl http://localhost:5200 || echo "ERROR: curl to start the game failed"'
-          sh 'curl http://localhost:5200/start || echo "ERROR: curl to start the game failed'
+          sh 'curl http://localhost:5200'
+          sh 'curl http://localhost:5200/start'
         }
       }
 
-      stage('push') {
+      stage('Push') {
         steps {
           sh 'docker push whalerider02/hangman-app-mp:latest'
         }
