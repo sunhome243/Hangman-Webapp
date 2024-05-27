@@ -1,5 +1,11 @@
 from flask import Flask, jsonify, send_from_directory
 import random
+import json
+import os
+
+# Path to the scores file within the mounted volume
+scores_file = '/data/scores.json' 
+
 app = Flask(__name__)
 
 # Word pool for the game
@@ -19,6 +25,35 @@ def start():
 @app.route('/<path:path>')
 def static_files(path):
     return send_from_directory('.', path)
+
+
+# Function to get scores from the file
+def get_scores():
+    try:
+        with open(scores_file, 'r') as f:
+            scores = json.load(f)
+    except FileNotFoundError:
+        scores = {}  # Initialize an empty dictionary if file doesn't exist
+    return scores
+
+# Function to save scores to the file
+def save_scores(scores):
+    with open(scores_file, 'w') as f:
+        json.dump(scores, f)
+
+# Route to handle score updates
+@app.route('/update_score', methods=['POST'])
+def update_score():
+    data = request.get_json()  # Get score data from the request
+    player_name = data.get('player')
+    score = data.get('score')
+
+    scores = get_scores()
+    scores[player_name] = score  # Update the score
+    save_scores(scores)
+
+    return jsonify({'message': 'Score updated successfully!'}), 200
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5200)
