@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Deadly Hangman Game!</title>
+    <title>Welcome to the Deadly Hangman Game!</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>The Hangman Game</h1>
-        <button id="startButton">Start</button>
-        <div id="gameArea" style="display: none;">
+
+        <div id="startArea">  <!--  Starting area for name input -->
+            <input type="text" id="playerInput" placeholder="Enter your name">
+            <button id="startButton">Start Game</button>
+        </div>
+
+        <div id="gameArea" style="display: none;"> <!-- Game area -->
             <div id="wordDisplay"></div>
             <div id="hangmanContainer">
                 <div id="gallows"></div>
@@ -29,14 +34,16 @@
                 </div>
             </div>
             <div id="inputArea">
-                <input type="text" id="playerInput" placeholder="Enter your name">
                 <input type="text" id="letterInput" maxlength="1">
                 <button id="guessButton">Guess</button>
             </div>
             <div id="message"></div>
             <div id="attempts">Attempts left: <span id="attemptsLeft"></span></div>
             <div id="triedLetters">Tried letters: <span id="lettersTried"></span></div>
-            <div id="scores">Scores: <span id="scoreDisplay"></span></div>
+            <div id="scoreArea">  <!-- Score area -->
+                <h2>Scores:</h2>
+                <ul id="scoreList"></ul> 
+            </div>
             <div class="spikes" id="spikes1"></div>
             <div class="spikes" id="spikes3"></div>
             <div class="spikes" id="spikes2"></div>

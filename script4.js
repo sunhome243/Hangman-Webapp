@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameArea = document.getElementById('gameArea');
     const hangmanParts = ['head', 'body', 'leftArm', 'rightArm', 'leftLeg', 'rightLeg', 'leftEye', 'rightEye', 'mouth'];
     const playerInput = document.getElementById('playerInput');
-    const scoreDisplay = document.getElementById('scoreDisplay');
+    const scoreList = document.getElementById('scoreList');
+    const startArea = document.getElementById('startArea'); // Get the starting area
 
     let word = '';
     let guessedLetters = [];
@@ -25,7 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function startGame() {
-        playerName = playerInput.value;
+        playerName = playerInput.value.trim(); 
+        if (playerName === '') {
+            alert('Please enter your name!');
+            return; 
+        }
+        startArea.style.display = 'none'; // Hide the start area
+        gameArea.style.display = 'block';  // Show the game area
+
         fetch('/start')
             .then(response => response.json())
             .then(data => {
@@ -34,13 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 wrongAttempts = 0;
                 updateDisplay();
                 resetHangman();
-                gameArea.style.display = 'block';
                 message.textContent = '';
                 lettersTried.textContent = '';
                 attemptsLeft.textContent = '10';
                 letterInput.disabled = false;
                 guessButton.disabled = false;
-                document.body.style.backgroundColor = ''; 
+                document.body.style.backgroundColor = '';
+                updateScoreDisplay(); // Update score display on game start
             })
             .catch(error => console.error('Error:', error));
     }
@@ -71,8 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     message.style.fontWeight = 'bold';
                     hangmanSafe();
                     disableInput();
-                    // Update player score after the game is won
-                    updatePlayerScore(playerName, 10 - wrongAttempts);
+                    updatePlayerScore(playerName, 10 - wrongAttempts); 
                 }
             }
         }
@@ -211,6 +218,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function updateScoreDisplay() {
+        fetch('/scores')
+            .then(response => response.json())
+            .then(scores => {
+                scoreList.innerHTML = ''; // Clear the list
+                for (const player in scores) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${player}: ${scores[player]}`;
+                    scoreList.appendChild(listItem);
+                }
+            })
+            .catch(error => console.error('Error fetching scores:', error));
+    }
+
     function updatePlayerScore(playerName, score) {
         fetch('/score', {
             method: 'POST',
@@ -219,20 +240,11 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => {
             if (response.ok) {
-                // Fetch and display scores
-                fetch('/scores')
-                    .then(response => response.json())
-                    .then(scores => {
-                        scoreDisplay.textContent = JSON.stringify(scores);
-                    })
-                    .catch(error => console.error('Error fetching scores:', error));
+                updateScoreDisplay(); 
             } else {
                 console.error('Error updating score:', response.statusText);
             }
         })
         .catch(error => console.error('Error updating score:', error));
     }
-
-    // Update scores when the page loads
-    updatePlayerScore();
 });
