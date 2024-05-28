@@ -195,8 +195,6 @@ function getRandomColor() {
     return color;
 }
 
-      
-
     function resetHangman() {
 
         const spikes = document.querySelectorAll('.spikes');
