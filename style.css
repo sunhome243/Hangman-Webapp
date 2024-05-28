@@ -16,6 +16,11 @@ button {
     background-color: #FFFFFF; /* Default color */
     color: #000000; /* Default text color */
     transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 button:hover {
@@ -224,4 +229,18 @@ button:hover {
     position: absolute;
     top: 35px;
     left: 75px;
+}
+
+#scoreArea {
+    margin-top: 20px;
+    text-align: left; /* Align scores to the left */
+}
+
+#scoreList {
+    list-style: none;
+    padding: 0;
+}
+
+#scoreList li {
+    margin-bottom: 5px;
 }
