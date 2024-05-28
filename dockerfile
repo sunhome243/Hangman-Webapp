@@ -5,9 +5,11 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY app.py /app/
-COPY index.html /app/
+COPY index.html /app/ 
 COPY style.css /app/
-COPY script4.js /app/  
-EXPOSE 5200
+COPY script4.js /app/
+COPY player_data.json /app/
 
-CMD ["python", "app.py"]
+EXPOSE 5400
+
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5200"]

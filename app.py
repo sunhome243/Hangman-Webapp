@@ -32,7 +32,7 @@ def player():
         except FileNotFoundError:
             player_data = {}
         if name in player_data:
-            # Player exists, update data
+            # Player exists, update datado
             player_data[name]['score'] = player_data[name].get('score', 0)
             player_data[name]['win_streak'] = player_data[name].get('win_streak', 0)
         else:

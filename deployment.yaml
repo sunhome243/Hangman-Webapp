@@ -12,18 +12,12 @@ spec:
       labels:
         app: hangman
     spec:
-      volumes:  # Define volumes here at the top level
-      - name: hangman-data
-        persistentVolumeClaim:
-          claimName: hangman-pvc
       containers:
       - name: hangman-container
-        image: whalerider02/hangman-app:latest  
+        image: whalerider02/hangman-app-mp:final
+        imagePullPolicy: Always
         ports:
         - containerPort: 5200
-        volumeMounts:
-        - name: hangman-data
-          mountPath: /app/player_data.json 
         resources: 
           limits:
             cpu: "200m"   
