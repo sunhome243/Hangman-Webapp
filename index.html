@@ -9,14 +9,17 @@
 <body>
     <div class="container">
         <h1>The Hangman Game</h1>
-
-        <div id="startArea">  <!--  Starting area for name input -->
-            <input type="text" id="playerInput" placeholder="Enter your name">
-            <button id="startButton">Start Game</button>
+        <div id="startArea"> 
+            <input type="text" id="playerNameInput" placeholder="Enter your name"> 
+            <button id="startButton">Start</button>
         </div>
-
-        <div id="gameArea" style="display: none;"> <!-- Game area -->
+        <div id="gameArea" style="display: none;">
+            <div id="welcomeMessage">Welcome, <span id="playerName"></span>!</div>
             <div id="wordDisplay"></div>
+            <div id="playerStats">
+                <p>Score: <span id="playerScore">0</span></p>
+                <p>Win Streak: <span id="playerWinStreak">0</span></p>
+            </div>
             <div id="hangmanContainer">
                 <div id="gallows"></div>
                 <div id="horizontalBeam"></div>
@@ -40,15 +43,13 @@
             <div id="message"></div>
             <div id="attempts">Attempts left: <span id="attemptsLeft"></span></div>
             <div id="triedLetters">Tried letters: <span id="lettersTried"></span></div>
-            <div id="scoreArea">  <!-- Score area -->
-                <h2>Scores:</h2>
-                <ul id="scoreList"></ul> 
-            </div>
+            <button id="restartButton">Restart</button>
             <div class="spikes" id="spikes1"></div>
             <div class="spikes" id="spikes3"></div>
             <div class="spikes" id="spikes2"></div>
             <div class="spikes" id="spikes4"></div>
             <div class="spikes" id="spikes5"></div>
+
         </div>
     </div>
     <script src="script4.js"></script>
