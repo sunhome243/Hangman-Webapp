@@ -3,7 +3,7 @@ import random
 import json
 import logging
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='.')
 
 # Configure logging (write to a file named 'app.log' in the container)
 logging.basicConfig(filename='app.log', level=logging.INFO)
@@ -88,10 +88,12 @@ def loss():
             return jsonify({'message': 'Player win streak reset'})
     return jsonify({'message': 'Invalid player name'})
 
+
 # Serve static files (including JavaScript and CSS)
-@app.route('/<path:path>')
-def static_files(path):
+@app.route('/<path:path>') 
+def static_file(path):
     return send_from_directory('.', path)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5200)

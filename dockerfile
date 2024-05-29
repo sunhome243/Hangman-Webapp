@@ -19,7 +19,7 @@ EXPOSE 5200
 # Mount the Persistent Disk
 VOLUME ["/data"]
 RUN mkdir /data
-COPY player_data.json /mnt/azure/player_data.json
+COPY player_data.json /data/player_data.json 
 
 # Run the Flask app using 'flask run'
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5200"]
