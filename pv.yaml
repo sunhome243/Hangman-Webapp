@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: hangman-pv
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: managed-csi
+  csi:
+    driver: disk.csi.azure.com
+    volumeHandle: /subscriptions/44bda31e-b619-476d-b6dd-9c270006715b/resourceGroups/MC_Web_app_webapplication_koreacentral/providers/Microsoft.Compute/disks/hangman-pv
+    volumeAttributes:
+      fsType: ext4
+
+

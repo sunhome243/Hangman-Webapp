@@ -78,7 +78,7 @@ button:hover {
 #verticalBeam {
     position: absolute;
     width: 10px; /* Adjust width as needed */
-    height: 100px; /* Adjust height as needed */
+    height: 80px; /* Adjust height as needed */
     background-color: #8B4513; /* Brown color */
     left: 130px; /* Adjust left position */
     top: 0; /* Adjust top position */
@@ -99,7 +99,7 @@ button:hover {
     border-left: 8px solid transparent; /* Adjust size as needed */
     border-right: 8px solid transparent; /* Adjust size as needed */
     border-bottom: 36px solid lightgray; /* Adjust size and color as needed */
-    transition: border-bottom-color 2s;
+    transition: border-bottom-color 1s;
 }
 
 #spikes1 {

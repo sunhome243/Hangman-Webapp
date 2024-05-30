@@ -8,5 +8,5 @@ spec:
     app: hangman
   ports:
   - protocol: TCP
-    port: 5400
+    port: 8787
     targetPort: 5200

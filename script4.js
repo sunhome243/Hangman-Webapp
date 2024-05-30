@@ -29,6 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     restartButton.addEventListener('click', startGame); 
 
+    fetch('/api_base_url') 
+        .then(response => response.json())
+        .then(data => {
+            window.API_BASE_URL = data.url;
+            console.log("API base URL:", window.API_BASE_URL);
+        })
+        .catch(error => console.error('Error fetching API base URL:', error));
+
     function startGame() {
         currentPlayerName = playerNameInput.value.trim();
         if (currentPlayerName) {
@@ -292,4 +300,6 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => console.error('Error updating score:', error));
         }
+
+        
     });

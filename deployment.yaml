@@ -12,13 +12,20 @@ spec:
       labels:
         app: hangman
     spec:
+      volumes: 
+      - name: hangman-data
+        persistentVolumeClaim:
+          claimName: hangman-pvc1
       containers:
       - name: hangman-container
         image: whalerider02/hangman-app-mp:final
         imagePullPolicy: Always
         ports:
         - containerPort: 5200
+        volumeMounts:
+        - name: hangman-data
+          mountPath: /mnt/azure # Corrected mount path
         resources: 
           limits:
-            cpu: "200m"   
-            memory: "256Mi" 
+            cpu: "200m"
+            memory: "256Mi"
