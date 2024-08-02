@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: hangman-service
 spec:
-  type: LoadBalancer # You can use 'NodePort' if 'LoadBalancer' is not available
+  type: NodePort # You can use 'NodePort' if 'LoadBalancer' is not available
   selector:
     app: hangman
   ports:
