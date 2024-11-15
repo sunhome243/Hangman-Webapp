@@ -29,14 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     restartButton.addEventListener('click', startGame); 
 
-    fetch('/api_base_url') 
-        .then(response => response.json())
-        .then(data => {
-            window.API_BASE_URL = data.url;
-            console.log("API base URL:", window.API_BASE_URL);
-        })
-        .catch(error => console.error('Error fetching API base URL:', error));
-
     function startGame() {
         currentPlayerName = playerNameInput.value.trim();
         if (currentPlayerName) {
@@ -52,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 playerNameDisplay.textContent = currentPlayerName;
                 // Hide the start area
                 startArea.style.display = 'none'; 
-    
+
                 // Start the game logic
                 fetch('/start')
                     .then(response => response.json())
@@ -70,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         letterInput.disabled = false;
                         guessButton.disabled = false;
                         document.body.style.backgroundColor = ''; 
-    
+
                         // Update score display after fetching stats
                         updateScoreDisplay(); 
                     })
@@ -300,6 +292,4 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => console.error('Error updating score:', error));
         }
-
-        
     });
